@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantify — Indoor plants for modern living</title>
+<meta name="description" content="Plantify sells low-fuss, high-personality houseplants — grown slow, shipped safe, guaranteed to settle in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<input type="checkbox" id="cart-toggle" class="toggle-input">
+
+<header>
+  <nav>
+    <a href="#home" class="brand"><span class="mark"></span>Plantify</a>
+    <input type="checkbox" id="menu-toggle" class="toggle-input">
+    <div class="nav-links">
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#plants">Plants</a>
+      <a class="nav-link" href="#benefits">Benefits</a>
+      <a class="nav-link" href="#reviews">Reviews</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <label for="cart-toggle" class="icon-label" aria-label="Open shopping basket">🧺</label>
+      <a class="btn btn-primary" href="#plants" style="display:none;" id="nav-shop-btn">Shop plants</a>
+      <label for="menu-toggle" class="menu-label" aria-label="Open navigation">☰</label>
+    </div>
+    <div class="mobile-menu">
+      <div class="wrap">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#plants">Plants</a>
+        <a class="nav-link" href="#benefits">Benefits</a>
+        <a class="nav-link" href="#reviews">Reviews</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Grown slow, shipped safe</p>
+        <h1>Plants that make themselves at home.</h1>
+        <p class="lede">Plantify pairs every pot with a plain-language care card, so first-time growers and plant-room veterans both end up with something thriving — not something wilting on a windowsill.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-ochre" href="#plants">Shop the collection</a>
+          <a class="btn btn-outline" href="#benefits">Why Plantify</a>
+        </div>
+        <div class="hero-proof">
+          <div class="avatars">
+            <span style="background:#d68c6c;"></span>
+            <span style="background:#6d9b76;"></span>
+            <span style="background:#e3ba74;"></span>
+          </div>
+          <p>Joined by 4,200+ plant parents this year</p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="tilt-block"></div>
+        <img src="https://loremflickr.com/900/1100/monstera,houseplant" alt="A large monstera plant in a woven basket beside a bright window">
+        <div class="hero-tag">
+          <p class="big">98%</p>
+          <p class="small">of Plantify orders arrive undamaged and root-ready</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plants" class="section-sage">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The current lineup</p>
+          <h2>Six plants worth rearranging your shelf for</h2>
+        </div>
+        <a class="btn btn-outline" href="#categories">Browse by room</a>
+      </div>
+      <div class="grid grid-3">
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/monstera,plant" alt="Monstera Deliciosa with large split leaves"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>Monstera Deliciosa</h3><span class="tag-price">£24</span></div>
+            <p class="tag-desc">Big, split-leaf drama for a bright corner. Grows fast once it's settled, and forgives the odd missed watering.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20a%20Monstera%20Deliciosa%20(%C2%A324)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20a%20Monstera%20Deliciosa.">Reserve this plant</a>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/snake,plant" alt="Snake plant with tall upright leaves"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>Snake Plant</h3><span class="tag-price">£18</span></div>
+            <p class="tag-desc">Near-impossible to kill. Happy in low light, thrives on neglect, and quietly filters the air while you're not looking.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20a%20Snake%20Plant%20(%C2%A318)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20a%20Snake%20Plant.">Reserve this plant</a>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/peace,lily,flower" alt="Peace lily with white blooms"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>Peace Lily</h3><span class="tag-price">£22</span></div>
+            <p class="tag-desc">Glossy leaves, white blooms, and a habit of drooping dramatically the moment it needs water — hard to ignore, easy to read.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20a%20Peace%20Lily%20(%C2%A322)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20a%20Peace%20Lily.">Reserve this plant</a>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/fiddle,leaf,fig" alt="Fiddle Leaf Fig with large violin-shaped leaves"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>Fiddle Leaf Fig</h3><span class="tag-price">£35</span></div>
+            <p class="tag-desc">The statement piece. Wants bright, steady light and a spot it isn't moved from — reward it and it rewards you back.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20a%20Fiddle%20Leaf%20Fig%20(%C2%A335)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20a%20Fiddle%20Leaf%20Fig.">Reserve this plant</a>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/zz,plant,green" alt="ZZ Plant with glossy dark green leaves"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>ZZ Plant</h3><span class="tag-price">£20</span></div>
+            <p class="tag-desc">Waxy, dark-green leaves that stay glossy in almost any light. Built for desks, hallways, and other rooms plants usually avoid.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20a%20ZZ%20Plant%20(%C2%A320)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20a%20ZZ%20Plant.">Reserve this plant</a>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <span class="tag-hole"></span>
+          <div class="tag-photo"><img src="https://loremflickr.com/640/480/aloe,vera,succulent" alt="Aloe Vera succulent in a terracotta pot"></div>
+          <div class="tag-body">
+            <div class="tag-row"><h3>Aloe Vera</h3><span class="tag-price">£15</span></div>
+            <p class="tag-desc">Sun-loving and self-sufficient, with a gel-filled leaf on standby for the next kitchen burn. A windowsill regular for a reason.</p>
+            <a class="add-cart" href="mailto:hello@plantify.com?subject=Reserve%20an%20Aloe%20Vera%20(%C2%A315)&body=Hi%20Plantify%2C%20I%27d%20like%20to%20reserve%20an%20Aloe%20Vera.">Reserve this plant</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <div class="wrap">
+      <div class="center-head">
+        <p class="eyebrow">Why people reorder</p>
+        <h2>Plant shopping, minus the guesswork</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="benefit-card">
+          <span class="glyph">🌱</span>
+          <h3>Grown, not warehoused</h3>
+          <p>Every plant comes straight from partner nurseries — never sitting in a distribution centre losing vigour.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="glyph">💚</span>
+          <h3>30-day settle-in guarantee</h3>
+          <p>If a plant struggles in its first month, we'll replace it free — no receipts, no cross-examination.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="glyph">🏡</span>
+          <h3>Matched to your space</h3>
+          <p>Tell us the light and the room, and we'll point you to plants that actually stand a chance there.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="glyph">🌿</span>
+          <h3>Care that's actually clear</h3>
+          <p>No jargon-heavy tags. Every plant ships with plain instructions written for the room it's going into.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories" class="section-forest">
+    <div class="wrap">
+      <p class="eyebrow on-dark">Shop by room</p>
+      <h2 style="margin-top:0.6rem;">Find what your space is missing</h2>
+      <div class="grid grid-4" style="margin-top:2.5rem;">
+        <a href="#plants" class="cat-card">
+          <img src="https://loremflickr.com/500/500/livingroom,plants" alt="Living room styled with large potted plants">
+          <div class="cat-overlay"></div>
+          <h3>Living room</h3>
+        </a>
+        <a href="#plants" class="cat-card">
+          <img src="https://loremflickr.com/500/500/bedroom,plant" alt="Bedroom with a calming plant on a nightstand">
+          <div class="cat-overlay"></div>
+          <h3>Bedroom</h3>
+        </a>
+        <a href="#plants" class="cat-card">
+          <img src="https://loremflickr.com/500/500/kitchen,herbs,plant" alt="Kitchen windowsill lined with small potted herbs">
+          <div class="cat-overlay"></div>
+          <h3>Kitchen</h3>
+        </a>
+        <a href="#plants" class="cat-card">
+          <img src="https://loremflickr.com/500/500/office,desk,plant" alt="Desk plant on an office workspace">
+          <div class="cat-overlay"></div>
+          <h3>Desk & office</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <img src="https://loremflickr.com/800/860/greenhouse,nursery" alt="Nursery greenhouse where Plantify plants are grown">
+      <div class="about-copy">
+        <p class="eyebrow">How we work</p>
+        <h2 style="margin-top:0.6rem;">Started in a spare room, still run that way</h2>
+        <p class="lede">Plantify began with three cuttings on a kitchen windowsill and a habit of over-explaining care instructions to friends. We've grown since — but we still ship every order the way we'd want to receive one: well-packed, honestly labelled, and from a grower we've actually met.</p>
+        <a class="btn btn-primary" href="#contact" style="margin-top:1.8rem;">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="care-band">
+    <div class="wrap">
+      <div class="care-head">
+        <div>
+          <p class="eyebrow">Keep it alive</p>
+          <h2 style="margin-top:0.6rem;">Care basics, no green thumb required</h2>
+        </div>
+        <a class="btn btn-outline" href="#contact">Ask us anything</a>
+      </div>
+      <div class="grid grid-3">
+        <div class="care-card">
+          <span class="glyph" style="font-size:1.5rem;">☀️</span>
+          <h3>Light</h3>
+          <p>Most houseplants want bright, indirect light — near a window, not directly on the sill. Rotate the pot weekly so growth doesn't lean.</p>
+        </div>
+        <div class="care-card">
+          <span class="glyph" style="font-size:1.5rem;">💧</span>
+          <h3>Water</h3>
+          <p>Check the top inch of soil before watering, not the calendar. Overwatering causes far more plant deaths than underwatering.</p>
+        </div>
+        <div class="care-card">
+          <span class="glyph" style="font-size:1.5rem;">🌡️</span>
+          <h3>Climate</h3>
+          <p>Keep plants away from cold draughts and radiators alike. Most tropicals are happiest between 18–27°C, same as most people.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <div class="center-head">
+        <p class="eyebrow">From the plant shelf</p>
+        <h2>What customers say after month one</h2>
+      </div>
+      <div class="grid grid-3">
+        <figure class="review-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>My fiddle leaf fig arrived without a single bruised leaf, and it's still thriving eight months later.</blockquote>
+          <figcaption>Nadia R., Manchester</figcaption>
+        </figure>
+        <figure class="review-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>The care card actually matched my flat — not generic advice copied off the internet.</blockquote>
+          <figcaption>Tom H., Leeds</figcaption>
+        </figure>
+        <figure class="review-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>First plant I've kept alive past a month. The snake plant made me brave enough to buy three more.</blockquote>
+          <figcaption>Priya S., Bristol</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-box">
+        <p style="font-size:1.9rem;">🌿</p>
+        <h2>Your next plant is one basket away</h2>
+        <p>Browse the current lineup, or tell us your room and light and we'll point you to the right match.</p>
+        <a class="btn btn-ochre" href="#plants" style="margin-top:1.6rem;">Shop the collection</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-sage">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Say hello</p>
+        <h2>Questions before you order?</h2>
+        <p>Send us a photo of the spot you're planting for and we'll tell you honestly whether it'll work — before you spend a penny.</p>
+      </div>
+      <div class="contact-panel">
+        <div class="contact-row">
+          <span class="ico">✉️</span>
+          <div>
+            <p class="label">Email us</p>
+            <a class="value" href="mailto:hello@plantify.com">hello@plantify.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="ico">📞</span>
+          <div>
+            <p class="label">Call the shop</p>
+            <p class="value">+44 20 7946 0958</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="ico">📍</span>
+          <div>
+            <p class="label">Visit us</p>
+            <p class="value">14 Greenhouse Lane, London N1 6DR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">Plantify</p>
+      <p class="tag">Low-fuss, high-personality houseplants — grown slow, shipped safe.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Explore</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#plants">Plants</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">Follow along</p>
+      <div class="footer-social">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+      </div>
+    </div>
+  </div>
+  <p class="wrap footer-bottom">© 2026 Plantify. All rights reserved.</p>
+</footer>
+
+<!-- Backdrop and drawer are driven purely by #cart-toggle's checked state via CSS -->
+<label for="cart-toggle" class="backdrop-label" aria-hidden="true"></label>
+<aside class="cart-drawer" aria-label="Shopping basket">
+  <div class="cart-head">
+    <h2>Your basket</h2>
+    <label for="cart-toggle" class="close-label" aria-label="Close basket">✕</label>
+  </div>
+  <div class="cart-items">
+    <p class="cart-empty">This basket runs on HTML and CSS alone — no JavaScript, so there's no running total here.</p>
+    <p class="cart-note">Tap "Reserve this plant" on any listing instead. It opens an email pre-filled with that plant's name and price, and we'll confirm stock and take payment directly.</p>
+  </div>
+  <div class="cart-foot">
+    <p class="note">Prefer to talk it through first? Email hello@plantify.com or use the contact section below.</p>
+  </div>
+</aside>
+
+</body>
+</html>
