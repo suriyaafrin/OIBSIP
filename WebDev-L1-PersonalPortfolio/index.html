@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suriya Islam Afrin — Front-End Developer</title>
+<meta name="description" content="Portfolio of Suriya Islam Afrin, front-end developer specializing in React and Next.js.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo"><span class="dot"></span>suriya<span style="color:var(--muted)">.dev</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#contact" class="nav-cta">Say hello</a>
+      </div>
+      <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Say hello</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <span class="tag">&lt;Hero /&gt;</span>
+        <div class="terminal">
+          <div class="bar"><span></span><span></span><span></span></div>
+          <div class="line"><span class="prompt">$</span> whoami</div>
+          <div class="line" style="color:#e6e9ec;">suriya-islam-afrin</div>
+          <div class="line" style="margin-top:8px;"><span class="prompt">$</span> stack --list</div>
+          <div class="line" style="color:#e6e9ec;">react, next.js, tailwind<span class="caret"></span></div>
+        </div>
+      </div>
+      <h1>I build interfaces that feel <em>inevitable</em>, not just functional.</h1>
+      <p class="hero-sub">Front-end developer specializing in React and Next.js — turning REST APIs and design comps into responsive, component-driven products, from first commit to production deploy.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View projects →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">4+</div><div class="label">Shipped web apps</div></div>
+        <div class="stat"><div class="num">3.36</div><div class="label">CGPA, B.Sc. CSE</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">IEEE publication</div></div>
+        <div class="stat"><div class="num">2025</div><div class="label">CSE graduate</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <span class="tag on-dark">&lt;About /&gt;</span>
+          <h2>Component-minded, detail-obsessed.</h2>
+        </div>
+        <div>
+          <div class="about-body reveal">
+            <p>I'm a front-end developer based in Dhaka, Bangladesh, with hands-on experience building responsive, user-friendly web applications using HTML, CSS, JavaScript, React.js, Next.js, and Tailwind CSS.</p>
+            <p>I care about clean, maintainable code and scalable component-based architecture — integrating REST APIs, shipping real projects end-to-end, and using Git/GitHub as second nature. I'm currently looking to grow with a collaborative team while going deeper into modern web technologies.</p>
+          </div>
+          <div class="about-facts reveal">
+            <div class="fact-row"><span class="k">Location</span><span class="v">Sutrapur, Dhaka-1100, Bangladesh</span></div>
+            <div class="fact-row"><span class="k">Education</span><span class="v">B.Sc. Computer Science &amp; Engineering, University of Asia Pacific (2022–2025)</span></div>
+            <div class="fact-row"><span class="k">Languages</span><span class="v">English, Bangla, Hindi</span></div>
+            <div class="fact-row"><span class="k">Also</span><span class="v">Volunteer, 45th ICPC World Finals, Dhaka</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">&lt;Skills /&gt;</span>
+        <h2>What I work with</h2>
+        <p>A front-end-first toolkit backed by enough back-end familiarity to work across the whole stack.</p>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <span class="idx">01 · Core</span>
+          <h3>Front-End</h3>
+          <div class="chip-row">
+            <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript (ES6+)</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="idx">02 · Frameworks</span>
+          <h3>React &amp; Next.js</h3>
+          <div class="chip-row">
+            <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="idx">03 · UI Libraries</span>
+          <h3>Component Kits</h3>
+          <div class="chip-row">
+            <span class="chip">Ant Design</span><span class="chip">shadcn/ui</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="idx">04 · Back-End</span>
+          <h3>Server &amp; Data</h3>
+          <div class="chip-row">
+            <span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="idx">05 · Tooling</span>
+          <h3>Dev Workflow</h3>
+          <div class="chip-row">
+            <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Vite</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="idx">06 · Deploy</span>
+          <h3>Shipping</h3>
+          <div class="chip-row">
+            <span class="chip">Vercel</span><span class="chip">Netlify</span><span class="chip">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">&lt;Projects /&gt;</span>
+        <h2>Selected work</h2>
+        <p>Four projects, from marketplace to media discovery to e-commerce — each shipped and deployed.</p>
+      </div>
+      <div class="project-list">
+
+        <div class="project reveal">
+          <div class="project-meta">
+            <span class="num">01</span>
+            <span class="cat">Marketplace</span>
+          </div>
+          <div>
+            <h3>Hater-Kaz — Technician Finder</h3>
+            <p>A location-based service marketplace for discovering and connecting with nearby technicians, with a mobile-first, responsive interface.</p>
+            <ul>
+              <li>Category-based navigation and search for efficient technician discovery</li>
+              <li>Reusable React components with a scalable frontend architecture</li>
+              <li>Deployed on Netlify with GitHub-integrated CI/CD</li>
+            </ul>
+            <a href="#" class="project-link">View repo →</a>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="project-meta">
+            <span class="num">02</span>
+            <span class="cat">Media Discovery</span>
+          </div>
+          <div>
+            <h3>CineVault — Movie &amp; Series Discovery</h3>
+            <p>A discovery platform built on the TMDb API with trending content, search, trailer playback, and a persistent watchlist.</p>
+            <ul>
+              <li>Global state management with Zustand for seamless UI updates</li>
+              <li>Detailed content pages and dynamic search functionality</li>
+              <li>Deployed on Vercel with environment-based API key management</li>
+            </ul>
+            <a href="#" class="project-link">View repo →</a>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="project-meta">
+            <span class="num">03</span>
+            <span class="cat">E-Commerce</span>
+          </div>
+          <div>
+            <h3>KathGhor — Furniture E-Commerce</h3>
+            <p>A responsive furniture e-commerce site built with Next.js, TypeScript, and Tailwind CSS.</p>
+            <ul>
+              <li>Product listings, category navigation, product details, and cart functionality</li>
+              <li>Reusable, component-based UI using the Next.js App Router</li>
+              <li>Clean, modern interface with interactive animations, deployed on Vercel</li>
+            </ul>
+            <a href="#" class="project-link">View repo →</a>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="project-meta">
+            <span class="num">04</span>
+            <span class="cat">UI Clone</span>
+          </div>
+          <div>
+            <h3>WhatsApp UI Clone</h3>
+            <p>A responsive, WhatsApp-inspired messaging interface replica focused on faithful UX replication.</p>
+            <ul>
+              <li>Reusable components for chat lists, messaging screens, and profiles</li>
+              <li>Component-based architecture for a scalable, maintainable frontend</li>
+              <li>Mobile-friendly interface replicating a real-world messaging app</li>
+            </ul>
+            <a href="#" class="project-link">View repo →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="research" id="research">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">&lt;Research /&gt;</span>
+        <h2>Published work</h2>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">IEEE · ICCIT 2025</span>
+        <div>
+          <h3>Swin-APSNet: A Transformer-Based Framework for Multi-Class Alzheimer's Disease Classification Using MRI</h3>
+          <p>Co-authored with N.H.B. Mahbub, T.B. Shuvro, F. Haque, and T. Helaly. Presented at the International Conference on Computer and Information Technology (ICCIT 2025).</p>
+          <a href="https://doi.org/10.1109/ICCIT68739.2025.11491601" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ICCIT68739.2025.11491601 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <div>
+          <span class="tag on-dark">&lt;Contact /&gt;</span>
+          <h2>Let's build something worth deploying.</h2>
+          <p>Open to front-end and full-stack opportunities. Reach out by email or connect on GitHub / LinkedIn.</p>
+        </div>
+        <div class="contact-links">
+          <div>
+            <div class="k">Email</div>
+            <a class="v" href="mailto:suriyaislamafrin@gmail.com">suriyaislamafrin@gmail.com</a>
+          </div>
+          <div>
+            <div class="k">Phone</div>
+            <a class="v" href="tel:+8801572043140">+880 1572-043140</a>
+          </div>
+          <div>
+            <div class="k">Location</div>
+            <div class="v" style="font-weight:500;">Dhaka, Bangladesh</div>
+          </div>
+          <div class="social-row">
+            <a href="#" aria-label="GitHub" target="_blank" rel="noopener noreferrer">GH</a>
+            <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>Built with HTML, CSS &amp; JS</span>
+      <span>© 2026 Suriya Islam Afrin</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
