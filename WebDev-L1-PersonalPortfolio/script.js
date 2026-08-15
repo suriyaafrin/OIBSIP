@@ -1,4 +1,4 @@
-// mobile menu
+
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   menuBtn.addEventListener('click', () => {
@@ -12,7 +12,7 @@
     });
   });
 
-  // scroll reveal
+
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
