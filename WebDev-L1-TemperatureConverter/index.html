@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true"><i data-lucide="thermometer"></i></div>
+          <p class="brand-name">ThermoScale</p>
+        </div>
+        <p class="header-note">Quick &amp; accurate conversions</p>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="rule"></div>
+
+      <section class="hero" aria-labelledby="page-title">
+        <p class="hero-kicker">Free tool</p>
+        <h1 id="page-title" class="hero-title">Temperature Converter</h1>
+        <p class="hero-description">Convert between Celsius, Fahrenheit, and Kelvin instantly. Enter a value, pick a unit, and see all three scales at once.</p>
+      </section>
+
+      <section class="converter-panel" aria-labelledby="converter-heading">
+        <div class="converter-header">
+          <div>
+            <p class="converter-kicker">Convert now</p>
+            <h2 id="converter-heading" class="converter-title">Enter your value</h2>
+          </div>
+          <div class="converter-icon" aria-hidden="true"><i data-lucide="arrow-left-right"></i></div>
+        </div>
+
+        <form id="converter-form" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="temperature-input">Temperature</label>
+              <input id="temperature-input" class="field-control" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 21.5" aria-describedby="validation-message">
+            </div>
+            <div>
+              <label for="unit-select">Unit</label>
+              <select id="unit-select" class="field-control" aria-label="Input temperature unit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+
+          <p id="validation-message" class="status-message" role="alert" aria-live="assertive"></p>
+
+          <button class="convert-button" type="submit">
+            <i data-lucide="arrow-down-up" aria-hidden="true"></i>
+            Convert
+          </button>
+        </form>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-heading">
+        <div class="results-header">
+          <div>
+            <p class="results-kicker">Results</p>
+            <h2 id="results-heading" class="results-title">All three scales</h2>
+          </div>
+          <p class="results-caption">Your converted temperature, shown side by side across Celsius, Fahrenheit, and Kelvin.</p>
+        </div>
+
+        <div class="results-grid">
+          <article class="result-card celsius-card">
+            <div class="result-card-head">
+              <p class="result-label">Celsius</p>
+              <span class="unit-symbol" aria-hidden="true">°C</span>
+            </div>
+            <p id="celsius-result" class="result-value" aria-live="polite">—</p>
+          </article>
+
+          <article class="result-card fahrenheit-card">
+            <div class="result-card-head">
+              <p class="result-label">Fahrenheit</p>
+              <span class="unit-symbol" aria-hidden="true">°F</span>
+            </div>
+            <p id="fahrenheit-result" class="result-value" aria-live="polite">—</p>
+          </article>
+
+          <article class="result-card kelvin-card">
+            <div class="result-card-head">
+              <p class="result-label">Kelvin</p>
+              <span class="unit-symbol" aria-hidden="true">K</span>
+            </div>
+            <p id="kelvin-result" class="result-value" aria-live="polite">—</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="info-banner" aria-labelledby="absolute-zero-title">
+        <div class="info-icon" aria-hidden="true"><i data-lucide="snowflake"></i></div>
+        <div>
+          <h2 id="absolute-zero-title">Did you know?</h2>
+          <p>Absolute zero is -273.15°C (-459.67°F, 0 K) — the coldest temperature theoretically possible.</p>
+        </div>
+      </aside>
+
+      <div class="rule"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-note">ThermoScale Temperature Converter</p>
+        <p class="footer-formula">°F = °C × 9/5 + 32 &nbsp;|&nbsp; K = °C + 273.15</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
