@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell" aria-labelledby="calculator-title">
+    <section class="calculator-frame" aria-label="Calculator">
+      <header>
+        <div class="header-row">
+          <div>
+            <h1 id="calculator-title">Calculator</h1>
+            <p class="subtitle">Simple arithmetic, done fast</p>
+          </div>
+          <div aria-hidden="true" class="dots">
+            <span class="dot dot-1"></span>
+            <span class="dot dot-2"></span>
+            <span class="dot dot-3"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="display-panel" aria-label="Calculation display">
+        <div id="expression" class="expression-line" aria-hidden="true"></div>
+        <output id="result" class="result-line" aria-live="polite" aria-atomic="true">0</output>
+      </section>
+
+      <section class="button-grid" aria-label="Calculator keypad">
+        <button class="calc-key clear-key wide-key" type="button" data-action="clear">AC</button>
+        <button class="calc-key backspace-key" type="button" data-action="backspace" aria-label="Delete last character">⌫</button>
+        <button class="calc-key operator-key" type="button" data-operator="/">÷</button>
+
+        <button class="calc-key number-key" type="button" data-number="7">7</button>
+        <button class="calc-key number-key" type="button" data-number="8">8</button>
+        <button class="calc-key number-key" type="button" data-number="9">9</button>
+        <button class="calc-key operator-key" type="button" data-operator="*">×</button>
+
+        <button class="calc-key number-key" type="button" data-number="4">4</button>
+        <button class="calc-key number-key" type="button" data-number="5">5</button>
+        <button class="calc-key number-key" type="button" data-number="6">6</button>
+        <button class="calc-key operator-key" type="button" data-operator="-">−</button>
+
+        <button class="calc-key number-key" type="button" data-number="1">1</button>
+        <button class="calc-key number-key" type="button" data-number="2">2</button>
+        <button class="calc-key number-key" type="button" data-number="3">3</button>
+        <button class="calc-key operator-key" type="button" data-operator="+">+</button>
+
+        <button class="calc-key number-key wide-key" type="button" data-number="0">0</button>
+        <button class="calc-key number-key" type="button" data-action="decimal">.</button>
+        <button class="calc-key equals-key" type="button" data-action="equals">=</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
