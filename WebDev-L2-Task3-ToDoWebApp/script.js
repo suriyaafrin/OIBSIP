@@ -1,132 +1,201 @@
-let allData = [];
-let editingId = null;
+(() => {
+  const STORAGE_KEY = 'ledger.entries.v1';
 
-const pendingList = document.getElementById('pending-list');
-const completedList = document.getElementById('completed-list');
-const pendingEmpty = document.getElementById('pending-empty');
-const completedEmpty = document.getElementById('completed-empty');
-const pendingCount = document.getElementById('pending-count');
-const completedCount = document.getElementById('completed-count');
-const form = document.getElementById('add-form');
-const input = document.getElementById('task-input');
+  const ICONS = {
+    check: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5L6.2 12 13 4"/></svg>`,
+    pencil: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2.5l2 2L5 13l-3 1 1-3 8.5-8.5z"/></svg>`,
+    trash: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h10M6.5 4.5V3a1 1 0 011-1h1a1 1 0 011 1v1.5M4.5 4.5l.6 8.4a1 1 0 001 .9h3.8a1 1 0 001-.9l.6-8.4"/></svg>`
+  };
 
-function formatDate(iso) {
+  /** @type {{id: string, text: string, settled: boolean, createdAt: string, settledAt: string|null}[]} */
+  let entries = loadEntries();
+  let editingId = null;
+
+  const els = {
+    form: document.getElementById('add-form'),
+    input: document.getElementById('task-input'),
+    openList: document.getElementById('open-list'),
+    settledList: document.getElementById('settled-list'),
+    openEmpty: document.getElementById('open-empty'),
+    settledEmpty: document.getElementById('settled-empty'),
+    openCount: document.getElementById('open-count'),
+    settledCount: document.getElementById('settled-count'),
+    ledgerNumber: document.getElementById('ledger-number'),
+    clearSettled: document.getElementById('clear-settled'),
+  };
+
+  function loadEntries() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveEntries() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  }
+
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  function formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso);
-    return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-}
+    return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) +
+      ' · ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  }
 
-function renderTasks() {
-    const pending = allData.filter(t => !t.completed);
-    const completed = allData.filter(t => t.completed);
+  function pad(n) {
+    return String(n).padStart(3, '0');
+  }
 
-    pendingCount.textContent = pending.length + ' pending';
-    completedCount.textContent = completed.length + ' completed';
+  function render() {
+    const open = entries.filter(e => !e.settled);
+    const settled = entries.filter(e => e.settled);
 
-    pendingEmpty.classList.toggle('hidden', pending.length > 0);
-    completedEmpty.classList.toggle('hidden', completed.length > 0);
+    els.ledgerNumber.textContent = pad(entries.length);
+    els.openCount.textContent = String(open.length);
+    els.settledCount.textContent = String(settled.length);
 
-    renderList(pendingList, pending, false);
-    renderList(completedList, completed, true);
-}
+    els.openEmpty.classList.toggle('hidden', open.length > 0);
+    els.settledEmpty.classList.toggle('hidden', settled.length > 0);
+    els.clearSettled.classList.toggle('hidden', settled.length === 0);
 
-function renderList(container, items, isCompleted) {
-    const existing = new Map([...container.children].map(el => [el.dataset.id, el]));
-    const fragment = document.createDocumentFragment();
+    renderList(els.openList, open, 1);
+    renderList(els.settledList, settled, open.length + 1);
+  }
 
-    items.forEach(item => {
-        let el = existing.get(item.__backendId);
-        if (el) {
-            updateTaskEl(el, item, isCompleted);
-            existing.delete(item.__backendId);
-        } else {
-            el = createTaskEl(item, isCompleted);
-            el.dataset.id = item.__backendId;
-        }
-        fragment.appendChild(el);
+  function renderList(container, items, startIndex) {
+    container.innerHTML = '';
+    items.forEach((entry, i) => {
+      container.appendChild(buildEntryEl(entry, startIndex + i));
     });
+  }
 
-    existing.forEach(el => el.remove());
-    container.appendChild(fragment);
-}
+  function buildEntryEl(entry, index) {
+    const li = document.createElement('li');
+    li.className = 'entry' + (entry.settled ? ' is-settled' : '');
+    li.dataset.id = entry.id;
 
-function createTaskEl(item, isCompleted) {
-    const div = document.createElement('div');
-    div.className = 'task-item flex items-start gap-3 p-4 rounded-xl border';
-    div.style.borderColor = '#E5E7EB';
-    div.dataset.id = item.__backendId;
-    updateTaskEl(div, item, isCompleted);
-    return div;
-}
-
-function updateTaskEl(div, item, isCompleted) {
-    if (editingId === item.__backendId) {
-        div.innerHTML = `
-            <div class="flex-1">
-                <input type="text" class="edit-input w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-[#4CAF7D]" value="${item.task_text.replace(/"/g, '&quot;')}" style="border-color:#E5E7EB">
-                <div class="flex gap-2 mt-2">
-                    <button class="save-btn px-3 py-1 rounded-lg text-sm font-medium text-white" style="background:#4CAF7D">Save</button>
-                    <button class="cancel-btn px-3 py-1 rounded-lg text-sm font-medium" style="background:#E5E7EB;color:#1F2937">Cancel</button>
-                </div>
-            </div>`;
-        const editInput = div.querySelector('.edit-input');
-        div.querySelector('.save-btn').onclick = async () => {
-            const val = editInput.value.trim();
-            if (!val) return;
-            editingId = null;
-            await window.dataSdk.update({ ...item, task_text: val });
-        };
-        div.querySelector('.cancel-btn').onclick = () => { editingId = null; renderTasks(); };
-        setTimeout(() => editInput.focus(), 0);
-        return;
-    }
-
-    const ts = isCompleted && item.completed_at ? 'Completed ' + formatDate(item.completed_at) : 'Added ' + formatDate(item.created_at);
-    div.innerHTML = `
-        <button class="toggle-btn mt-1 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition" style="border-color:${isCompleted ? '#10B981' : '#E5E7EB'};background:${isCompleted ? '#10B981' : 'transparent'}">
-            ${isCompleted ? '<i data-lucide="check" style="width:12px;height:12px;color:white"></i>' : ''}
-        </button>
-        <div class="flex-1 min-w-0">
-            <p class="text-[15px] ${isCompleted ? 'line-through opacity-60' : ''}" style="color:#1F2937">${item.task_text}</p>
-            <span class="text-xs" style="color:#6B7280">${ts}</span>
+    if (editingId === entry.id) {
+      li.innerHTML = `
+        <span class="entry-index">${pad(index)}</span>
+        <div class="edit-row">
+          <label class="sr-only" for="edit-${entry.id}">Edit entry</label>
+          <input id="edit-${entry.id}" class="edit-input" type="text" value="${escapeAttr(entry.text)}" maxlength="200">
         </div>
-        <div class="flex gap-1 flex-shrink-0">
-            <button class="edit-btn p-1.5 rounded-lg hover:bg-gray-100 transition"><i data-lucide="pencil" style="width:16px;height:16px;color:#6B7280"></i></button>
-            <button class="del-btn p-1.5 rounded-lg hover:bg-red-50 transition"><i data-lucide="trash-2" style="width:16px;height:16px;color:#EF4444"></i></button>
+        <div class="edit-actions">
+          <button type="button" class="text-btn save-btn">Save</button>
+          <button type="button" class="text-btn cancel-btn">Cancel</button>
         </div>`;
 
-    div.querySelector('.toggle-btn').onclick = async () => {
-        const now = !item.completed ? new Date().toISOString() : '';
-        await window.dataSdk.update({ ...item, completed: !item.completed, completed_at: now });
-    };
-    div.querySelector('.edit-btn').onclick = () => { editingId = item.__backendId; renderTasks(); };
-    div.querySelector('.del-btn').onclick = async () => { await window.dataSdk.delete(item); };
+      const editInput = li.querySelector('.edit-input');
+      const commit = () => {
+        const val = editInput.value.trim();
+        if (!val) return;
+        entry.text = val;
+        editingId = null;
+        saveEntries();
+        render();
+      };
+      li.querySelector('.save-btn').addEventListener('click', commit);
+      li.querySelector('.cancel-btn').addEventListener('click', () => {
+        editingId = null;
+        render();
+      });
+      editInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); commit(); }
+        if (e.key === 'Escape') { e.preventDefault(); editingId = null; render(); }
+      });
 
-    lucide.createIcons();
-}
-
-const handler = {
-    onDataChanged(data) {
-        allData = data;
-        renderTasks();
+      queueMicrotask(() => { editInput.focus(); editInput.select(); });
+      return li;
     }
-};
 
-form.addEventListener('submit', async (e) => {
+    const timestamp = entry.settled
+      ? 'Settled ' + formatDate(entry.settledAt)
+      : 'Logged ' + formatDate(entry.createdAt);
+
+    li.innerHTML = `
+      <span class="entry-index">${pad(index)}</span>
+      <button type="button" class="stamp" aria-pressed="${entry.settled}" aria-label="${entry.settled ? 'Mark as open' : 'Mark as settled'}">
+        ${ICONS.check}
+      </button>
+      <div class="entry-body">
+        <p class="entry-text"></p>
+        <span class="entry-meta">${timestamp}</span>
+      </div>
+      <div class="entry-actions">
+        <button type="button" class="icon-btn edit-btn" aria-label="Edit entry">${ICONS.pencil}</button>
+        <button type="button" class="icon-btn danger del-btn" aria-label="Delete entry">${ICONS.trash}</button>
+      </div>`;
+
+    // set text content safely (avoids HTML injection from task text)
+    li.querySelector('.entry-text').textContent = entry.text;
+
+    li.querySelector('.stamp').addEventListener('click', () => toggleEntry(entry.id));
+    li.querySelector('.edit-btn').addEventListener('click', () => {
+      editingId = entry.id;
+      render();
+    });
+    li.querySelector('.del-btn').addEventListener('click', () => deleteEntry(entry.id));
+
+    return li;
+  }
+
+  function escapeAttr(str) {
+    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  function addEntry(text) {
+    entries.unshift({
+      id: uid(),
+      text,
+      settled: false,
+      createdAt: new Date().toISOString(),
+      settledAt: null,
+    });
+    saveEntries();
+    render();
+  }
+
+  function toggleEntry(id) {
+    const entry = entries.find(e => e.id === id);
+    if (!entry) return;
+    entry.settled = !entry.settled;
+    entry.settledAt = entry.settled ? new Date().toISOString() : null;
+    saveEntries();
+    render();
+  }
+
+  function deleteEntry(id) {
+    entries = entries.filter(e => e.id !== id);
+    if (editingId === id) editingId = null;
+    saveEntries();
+    render();
+  }
+
+  function clearSettled() {
+    entries = entries.filter(e => !e.settled);
+    saveEntries();
+    render();
+  }
+
+  els.form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const text = input.value.trim();
+    const text = els.input.value.trim();
     if (!text) return;
-    if (allData.length >= 999) { return; }
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    input.value = '';
-    const result = await window.dataSdk.create({ task_text: text, completed: false, created_at: new Date().toISOString(), completed_at: '' });
-    btn.disabled = false;
-    if (!result.isOk) input.value = text;
-});
+    addEntry(text);
+    els.input.value = '';
+    els.input.focus();
+  });
 
-(async () => {
-    const r = await window.dataSdk.init(handler);
-    if (!r.isOk) console.error('SDK init failed');
-    lucide.createIcons();
+  els.clearSettled.addEventListener('click', clearSettled);
+
+  render();
 })();

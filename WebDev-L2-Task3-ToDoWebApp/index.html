@@ -1,55 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledger — a daily task ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body data-template-id="__page-root" class="min-h-screen p-4 md:p-8">
-  <main class="max-w-2xl mx-auto">
-    <header class="text-center mb-8">
-      <h1 data-template-id="app-title" class="canva-text text-3xl font-bold"></h1>
-      <p data-template-id="app-subtitle" class="canva-text mt-2"></p>
-    </header>
+<body>
 
-    <div data-template-id="main-card" class="canva-card rounded-2xl shadow-lg p-6 md:p-8">
-      <!-- Add Task Form -->
-      <form id="add-form" class="flex gap-3 mb-8">
-        <label for="task-input" class="sr-only">New task</label>
-        <input id="task-input" data-template-id="task-input" type="text" class="canva-input flex-1 px-4 py-3 rounded-xl border-2 focus:outline-none focus:border-[#4CAF7D] transition" style="border-color:#E5E7EB">
-        <button data-template-id="add-button" type="submit" class="canva-button px-6 py-3 rounded-xl font-semibold transition hover:opacity-90"></button>
-      </form>
+<div class="ledger-page">
 
-      <!-- Pending Section -->
-      <section aria-labelledby="pending-heading" class="mb-8">
-        <div class="flex items-center gap-3 mb-4">
-          <h2 data-template-id="pending-heading" id="pending-heading" class="canva-text text-lg font-semibold"></h2>
-          <span id="pending-count" class="text-sm font-medium px-2.5 py-0.5 rounded-full" style="background:#FEF3C7;color:#D97706">0 pending</span>
-        </div>
-        <div id="pending-list" class="space-y-3"></div>
-        <p data-template-id="pending-empty" id="pending-empty" class="canva-text text-center py-6 hidden"></p>
-      </section>
+  <header class="ledger-header">
+    <p class="eyebrow">Task Ledger · Entry No. <span id="ledger-number">001</span></p>
+    <h1>Ledger</h1>
+    <p class="subtitle">Write it down. Stamp it when it's settled.</p>
+  </header>
 
-      <!-- Completed Section -->
-      <section aria-labelledby="completed-heading">
-        <div class="flex items-center gap-3 mb-4">
-          <h2 data-template-id="completed-heading" id="completed-heading" class="canva-text text-lg font-semibold"></h2>
-          <span id="completed-count" class="text-sm font-medium px-2.5 py-0.5 rounded-full" style="background:#D1FAE5;color:#059669">0 completed</span>
-        </div>
-        <div id="completed-list" class="space-y-3"></div>
-        <p data-template-id="completed-empty" id="completed-empty" class="canva-text text-center py-6 hidden"></p>
-      </section>
+  <form id="add-form" class="entry-form" autocomplete="off">
+    <label for="task-input" class="sr-only">New entry</label>
+    <input id="task-input" type="text" placeholder="What needs doing?" maxlength="200">
+    <button type="submit">
+      <span>Add entry</span>
+    </button>
+  </form>
+
+  <section class="ledger-section" aria-labelledby="open-heading">
+    <div class="section-head">
+      <h2 id="open-heading">Open</h2>
+      <span class="count" id="open-count">0</span>
     </div>
-  </main>
+    <ol id="open-list" class="entry-list"></ol>
+    <p id="open-empty" class="empty-state hidden">No open entries. Add your first one above.</p>
+  </section>
 
-  <!-- Canva app SDKs (required for window.dataSdk to work) -->
-  <script src="/_sdk/a051f9537983733d.editing_sdk.js"></script>
-  <script src="/_sdk/0e8d3a91e1c6f495.data_sdk.js"></script>
+  <section class="ledger-section" aria-labelledby="settled-heading">
+    <div class="section-head">
+      <h2 id="settled-heading">Settled</h2>
+      <span class="count" id="settled-count">0</span>
+    </div>
+    <ol id="settled-list" class="entry-list"></ol>
+    <p id="settled-empty" class="empty-state hidden">Nothing settled yet.</p>
+  </section>
 
-  <script src="script.js"></script>
+  <footer class="ledger-footer">
+    <p>Entries are saved in this browser only.</p>
+    <button id="clear-settled" type="button" class="text-btn hidden">Clear settled entries</button>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
