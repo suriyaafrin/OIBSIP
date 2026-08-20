@@ -3,53 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ledger — a daily task ledger</title>
+<title>Todo List</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="ledger-page">
+<div class="page">
+  <div class="card">
 
-  <header class="ledger-header">
-    <p class="eyebrow">Task Ledger · Entry No. <span id="ledger-number">001</span></p>
-    <h1>Ledger</h1>
-    <p class="subtitle">Write it down. Stamp it when it's settled.</p>
-  </header>
+    <header class="app-header">
+      <h1>Todo List</h1>
+      <p class="subtitle">Simple, fully functional, saved right here in your browser.</p>
+    </header>
 
-  <form id="add-form" class="entry-form" autocomplete="off">
-    <label for="task-input" class="sr-only">New entry</label>
-    <input id="task-input" type="text" placeholder="What needs doing?" maxlength="200">
-    <button type="submit">
-      <span>Add entry</span>
-    </button>
-  </form>
+    <form id="add-form" class="entry-form" autocomplete="off">
+      <label for="task-input" class="sr-only">New task</label>
+      <input id="task-input" type="text" placeholder="Add a task…" maxlength="200">
+      <button type="submit">Add</button>
+    </form>
 
-  <section class="ledger-section" aria-labelledby="open-heading">
-    <div class="section-head">
-      <h2 id="open-heading">Open</h2>
-      <span class="count" id="open-count">0</span>
-    </div>
-    <ol id="open-list" class="entry-list"></ol>
-    <p id="open-empty" class="empty-state hidden">No open entries. Add your first one above.</p>
-  </section>
+    <section class="task-section" aria-labelledby="pending-heading">
+      <div class="section-head">
+        <h2 id="pending-heading">To do</h2>
+        <span class="count" id="pending-count">0</span>
+      </div>
+      <ul id="pending-list" class="task-list"></ul>
+      <p id="pending-empty" class="empty-state hidden">Nothing to do. Add a task above.</p>
+    </section>
 
-  <section class="ledger-section" aria-labelledby="settled-heading">
-    <div class="section-head">
-      <h2 id="settled-heading">Settled</h2>
-      <span class="count" id="settled-count">0</span>
-    </div>
-    <ol id="settled-list" class="entry-list"></ol>
-    <p id="settled-empty" class="empty-state hidden">Nothing settled yet.</p>
-  </section>
+    <section class="task-section" aria-labelledby="done-heading">
+      <div class="section-head">
+        <h2 id="done-heading">Done</h2>
+        <span class="count" id="done-count">0</span>
+      </div>
+      <ul id="done-list" class="task-list"></ul>
+      <p id="done-empty" class="empty-state hidden">Nothing finished yet.</p>
+    </section>
 
-  <footer class="ledger-footer">
-    <p>Entries are saved in this browser only.</p>
-    <button id="clear-settled" type="button" class="text-btn hidden">Clear settled entries</button>
-  </footer>
+    <footer class="app-footer">
+      <p>Saved locally in this browser.</p>
+      <button id="clear-done" type="button" class="text-btn clear-btn hidden">Clear done</button>
+    </footer>
 
+  </div>
 </div>
 
 <script src="script.js"></script>
